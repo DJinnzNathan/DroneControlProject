@@ -17,10 +17,7 @@ void ofApp::update() {
 
 	binarizeFrame(pixels);
 	setObjectCenter();
-	cout << "Absolutposition: " << addedPixelPosX << ", " << addedPixelPosY << endl;
-	cout << "Anzahl: " << binPixelsCounter << endl;
-	cout << "Zentrum: " << centerX << ", " << centerY << "\n" << endl;
-
+	
 	drawCrosshair(pixels);
 
 	imgFrame.setFromPixels(pixels);
@@ -179,6 +176,13 @@ void ofApp::drawCrosshair(ofPixelsRef& pixels)
 			if (centerY - i > 0) pixels.setColor(centerX, centerY - i, ofColor::red);
 		}
 	}
+}
+
+void ofApp::printPixelData()
+{
+	cout << "Absolutposition: " << addedPixelPosX << ", " << addedPixelPosY << endl;
+	cout << "Anzahl: " << binPixelsCounter << endl;
+	cout << "Zentrum: " << centerX << ", " << centerY << "\n" << endl;
 }
 
 //--------------------------------------------------------------

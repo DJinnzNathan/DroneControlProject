@@ -28,6 +28,7 @@ public:
 	void addPixelPositions(int x, int y);
 	void setObjectCenter();
 	void drawCrosshair(ofPixelsRef& pixels);
+	void printPixelData();
 
 	int camWidth, camHeight;
 	long addedPixelPosX, addedPixelPosY;
@@ -36,5 +37,4 @@ public:
 
 	ofVideoGrabber vidGrabber;
 	ofImage imgFrame;
-
 };
