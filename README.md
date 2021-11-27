@@ -1,4 +1,4 @@
-# DroneControlProject
+# Drone Control Project
 This is a project from the course "Interaktion" from TH Nuremberg. Our goal was to build a program that lets a dji Tello drone recognizes and follows an object.
 
 ## Requirements
@@ -19,3 +19,5 @@ To start developing, head over to the unzipped openFrameworks-folder.
 - Click update and wait until finished.
 
 Now you can open the project with your IDE and start developing.
+
+## Goal
