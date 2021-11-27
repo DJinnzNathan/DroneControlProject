@@ -18,8 +18,12 @@ void ofApp::update() {
 	binarizeFrame(pixels);
 	setObjectCenter();
 	
-	drawCrosshair(pixels);
+	drawCrosshair(pixels, ofColor::red);
 
+	cout << isHorizontalAligned(centerX) << endl;
+
+
+	drawFlanks(pixels);
 	imgFrame.setFromPixels(pixels);
 
 	ofBackground(100, 100, 100);
@@ -32,58 +36,6 @@ void ofApp::draw() {
 	ofSetHexColor(0xffffff);
 	vidGrabber.draw(20, 20);
 	imgFrame.draw(vidGrabber.getWidth(), 20);
-}
-
-//--------------------------------------------------------------
-void ofApp::keyPressed(int key) {
-	if (key == 's' || key == 'S') {
-		vidGrabber.videoSettings();
-	}
-}
-
-//--------------------------------------------------------------
-void ofApp::keyReleased(int key) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseEntered(int x, int y) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseExited(int x, int y) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::windowResized(int w, int h) {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg) {
-
 }
 
 void ofApp::setVidGrabber()
@@ -166,16 +118,49 @@ void ofApp::setObjectCenter()
 	}
 }
 
-void ofApp::drawCrosshair(ofPixelsRef& pixels)
+void ofApp::drawCrosshair(ofPixelsRef& pixels, ofColor color)
 {
 	if (binPixelsCounter > 200) {
 		for (int i = 0; i < 10; i++) {
-			if (centerX + i < camWidth) pixels.setColor(centerX + i, centerY, ofColor::red);
-			if (centerY + i < camHeight) pixels.setColor(centerX, centerY + i, ofColor::red);
-			if (centerX - i > 0) pixels.setColor(centerX - i, centerY, ofColor::red);
-			if (centerY - i > 0) pixels.setColor(centerX, centerY - i, ofColor::red);
+			if (centerX + i < camWidth) pixels.setColor(centerX + i, centerY, color);
+			if (centerY + i < camHeight) pixels.setColor(centerX, centerY + i, color);
+			if (centerX - i > 0) pixels.setColor(centerX - i, centerY, color);
+			if (centerY - i > 0) pixels.setColor(centerX, centerY - i, color);
 		}
 	}
+}
+
+void ofApp::drawFlanks(ofPixelsRef& pixels)
+{
+	int middleOfX = camWidth / 2;
+	int flankWidth = camWidth / 3;
+
+	drawVerticalLine(pixels, flankWidth);
+	drawVerticalLine(pixels, camWidth - flankWidth);
+}
+
+void ofApp::drawVerticalLine(ofPixelsRef& pixels, int x)
+{
+	for (int i = 0; i < camHeight; i++)
+	{
+		pixels.setColor(x, i, ofColor::green);
+	}
+}
+
+int ofApp::isHorizontalAligned(int x)
+{
+	int middleOfX = camWidth / 2;
+	int flankWidth = camWidth / 3;
+	if (centerX > middleOfX + (flankWidth / 2)) {
+		cout << "Steer to the right" << endl;
+		return 1;
+	}
+	if (centerX < middleOfX - (flankWidth / 2)) {
+		cout << "Steer to the left" << endl;
+		return -1;
+	}
+	cout << "You're alright" << endl;
+	return 0;
 }
 
 void ofApp::printPixelData()
@@ -183,6 +168,58 @@ void ofApp::printPixelData()
 	cout << "Absolutposition: " << addedPixelPosX << ", " << addedPixelPosY << endl;
 	cout << "Anzahl: " << binPixelsCounter << endl;
 	cout << "Zentrum: " << centerX << ", " << centerY << "\n" << endl;
+}
+
+//--------------------------------------------------------------
+void ofApp::keyPressed(int key) {
+	if (key == 's' || key == 'S') {
+		vidGrabber.videoSettings();
+	}
+}
+
+//--------------------------------------------------------------
+void ofApp::keyReleased(int key) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseMoved(int x, int y) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseDragged(int x, int y, int button) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mousePressed(int x, int y, int button) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseReleased(int x, int y, int button) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseEntered(int x, int y) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseExited(int x, int y) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::windowResized(int w, int h) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::gotMessage(ofMessage msg) {
+
 }
 
 //--------------------------------------------------------------
