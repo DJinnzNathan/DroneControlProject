@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxOpenCv.h"
+#include "ofxTello.h"
 
 class ofApp : public ofBaseApp {
 
@@ -10,9 +11,11 @@ public:
 	long addedPixelPosX, addedPixelPosY;
 	int centerX, centerY;
 	int binPixelsCounter;
+	int distance, angle, speed;
 
 	ofVideoGrabber vidGrabber;
 	ofImage imgFrame;
+	ofxTello tello;
 
 	void setup();
 	void update();
@@ -26,8 +29,11 @@ public:
 	void drawCrosshair(ofPixelsRef& pixels, ofColor color);
 	void drawFlanks(ofPixelsRef& pixels);
 	void drawVerticalLine(ofPixelsRef& pixels, int x);
-	int isHorizontalAligned(int x);
 	void printPixelData();
+	int isHorizontalAligned(int x);
+
+	// TELLO METHODS
+	void setupDrone();
 
 	void keyPressed(int key);
 	void keyReleased(int key);

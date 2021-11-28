@@ -62,6 +62,14 @@ void ofApp::setVidGrabber()
 	vidGrabber.initGrabber(camWidth, camHeight);
 }
 
+void ofApp::setupDrone()
+{
+	distance = 50;
+	angle = 45;
+	speed = 50;
+	tello.connect();
+}
+
 void ofApp::resetCounters()
 {
 	addedPixelPosX = 0, addedPixelPosY = 0;
@@ -174,6 +182,18 @@ void ofApp::printPixelData()
 void ofApp::keyPressed(int key) {
 	if (key == 's' || key == 'S') {
 		vidGrabber.videoSettings();
+	}
+	else if (key == 't') {
+		cout << "Takeoff" << endl;
+		tello.takeoff();
+	}
+	else if (key == 'l') {
+		cout << "Landing" << endl;
+		tello.land();
+	}
+	else if (key == 'e') {
+		cout << "Trello disconnect" << endl;
+		tello.close();
 	}
 }
 
