@@ -10,7 +10,7 @@ This is a project from the course "Interaktion" from TH Nuremberg. Our goal was 
 
 ## Setup
 To start developing, head over to the unzipped openFrameworks-folder. 
-- First you need to add the third-party addon by @kikpond15. Head over to __*addons__ in the openFrameworks-folder and create a folder called __ofxTello__.
+- First you need to add the third-party addon by [@kikpond15](https://github.com/kikpond15). Head over to __*addons__ in the openFrameworks-folder and create a folder called __ofxTello__.
 - Insert all the files of [his project (ofxTello)](https://github.com/kikpond15/ofxTello) in that folder.
 - Next, go to __*apps / myApps*__. Create a folder inside __*myApps*__ with a project name of your choice.
 - Copy all the files inside this project to the new folder. 
@@ -20,4 +20,9 @@ To start developing, head over to the unzipped openFrameworks-folder.
 
 Now you can open the project with your IDE and start developing.
 
-## Goal
+## Roadmap
+[] Drone can start and land via code
+[] Drone can fly through the room via code
+[] Drone can recognize a color and it's center and turns that way
+[] Drone can follow object with specific color in the room
+[] Drone can recognize gestures and reacts with commands
