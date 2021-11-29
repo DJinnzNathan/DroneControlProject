@@ -17,7 +17,7 @@ void ofApp::update() {
 
 	binarizeFrame(pixels);
 	setObjectCenter();
-	
+
 	drawCrosshair(pixels, ofColor::red);
 
 	cout << isHorizontalAligned(centerX) << endl;
@@ -194,6 +194,10 @@ void ofApp::keyPressed(int key) {
 	else if (key == 'e') {
 		cout << "Trello disconnect" << endl;
 		tello.close();
+	}
+	else if (key == 'p') {
+		cout << "Playing sound" << endl;
+		soundPlayer.play();
 	}
 }
 
