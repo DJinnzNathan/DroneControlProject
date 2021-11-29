@@ -513,6 +513,13 @@
       <AdditionalIncludeDirectories>$(OF_ROOT)\libs\openFrameworksCompiled\project\vs</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\..\..\..\..\..\Downloads\battery_low.mp3" />
+    <Media Include="..\..\..\..\..\..\Downloads\init_f_landing.mp3" />
+    <Media Include="..\..\..\..\..\..\Downloads\landing.mp3" />
+    <Media Include="..\..\..\..\..\..\Downloads\ready_for_takeoff.mp3" />
+    <Media Include="..\..\..\..\..\..\Downloads\takeoff.mp3" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ProjectExtensions>
     <VisualStudio>
