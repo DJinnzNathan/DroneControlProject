@@ -27,7 +27,7 @@ x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Bb]in/
+![Bb]in/
 [Oo]bj/
 [Oo]ut/
 [Ll]og/
@@ -363,4 +363,8 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # openFrameworks
-!bin/data/sounds/
+[Bb]in/*
+![Bb]in/data/
+
+[Bb]in/data/*
+![Bb]in/data/sounds/
