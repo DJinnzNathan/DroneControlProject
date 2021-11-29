@@ -21,8 +21,8 @@ To start developing, head over to the unzipped openFrameworks-folder.
 Now you can open the project with your IDE and start developing.
 
 ## Roadmap
-[] Drone can start and land via code
-[] Drone can fly through the room via code
-[] Drone can recognize a color and it's center and turns that way
-[] Drone can follow object with specific color in the room
-[] Drone can recognize gestures and reacts with commands
+- [ ] Drone can start and land via code
+- [ ] Drone can fly through the room via code
+- [ ] Drone can recognize a color and it's center and turns that way
+- [ ] Drone can follow object with specific color in the room
+- [ ] Drone can recognize gestures and reacts with commands
