@@ -7,6 +7,7 @@ void ofApp::setup() {
 	camHeight = 480;
 
 	setVidGrabber();
+	playSound("setup_complete.mp3");
 }
 
 //--------------------------------------------------------------
@@ -67,7 +68,14 @@ void ofApp::setupDrone()
 	distance = 50;
 	angle = 45;
 	speed = 50;
-	tello.connect();
+	try
+	{
+		tello.connect();
+	}
+	catch (const std::exception&)
+	{
+
+	}
 }
 
 void ofApp::resetCounters()
@@ -79,8 +87,8 @@ void ofApp::resetCounters()
 
 void ofApp::binarizeFrame(ofPixelsRef& pixels)
 {
-	for (int y = 0; y < vidGrabber.getHeight(); y++) {
-		for (int x = 0; x < vidGrabber.getWidth(); x++)
+	for (size_t y = 0; y < vidGrabber.getHeight(); y++) {
+		for (size_t x = 0; x < vidGrabber.getWidth(); x++)
 		{
 			//get Color from Frame and convert to HUE
 			ofColor color = pixels.getColor(x, y);
@@ -129,7 +137,7 @@ void ofApp::setObjectCenter()
 void ofApp::drawCrosshair(ofPixelsRef& pixels, ofColor color)
 {
 	if (binPixelsCounter > 200) {
-		for (int i = 0; i < 10; i++) {
+		for (size_t i = 0; i < 10; i++) {
 			if (centerX + i < camWidth) pixels.setColor(centerX + i, centerY, color);
 			if (centerY + i < camHeight) pixels.setColor(centerX, centerY + i, color);
 			if (centerX - i > 0) pixels.setColor(centerX - i, centerY, color);
@@ -185,14 +193,17 @@ void ofApp::keyPressed(int key) {
 	}
 	else if (key == 't') {
 		cout << "Takeoff" << endl;
+		playSound("takeoff.mp3");
 		tello.takeoff();
 	}
 	else if (key == 'l') {
 		cout << "Landing" << endl;
+		playSound("landing.mp3");
 		tello.land();
 	}
 	else if (key == 'e') {
 		cout << "Trello disconnect" << endl;
+
 		tello.close();
 	}
 }
@@ -240,6 +251,13 @@ void ofApp::windowResized(int w, int h) {
 //--------------------------------------------------------------
 void ofApp::gotMessage(ofMessage msg) {
 
+}
+
+void ofApp::playSound(string filename)
+{
+	player.unload();
+	player.load("/sounds/" + filename);
+	player.play();
 }
 
 //--------------------------------------------------------------

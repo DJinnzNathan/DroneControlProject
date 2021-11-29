@@ -363,5 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # openFrameworks
-.vcxproj
-.vcxproj.filters
+!bin/data/sounds/

@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxOpenCv.h"
 #include "ofxTello.h"
+#include <string>
 
 class ofApp : public ofBaseApp {
 
@@ -46,4 +47,11 @@ public:
 	void windowResized(int w, int h);
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
+
+	// SOUNDS
+	void playSound(string filename);
+
+private:
+	ofSoundPlayer player;
+
 };
