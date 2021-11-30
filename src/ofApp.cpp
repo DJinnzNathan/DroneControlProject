@@ -7,7 +7,7 @@ void ofApp::setup() {
 	camHeight = 480;
 
 	setVidGrabber();
-	playSound("setup_complete.mp3");
+	playSound("setup complete");
 }
 
 //--------------------------------------------------------------
@@ -21,7 +21,7 @@ void ofApp::update() {
 	
 	drawCrosshair(pixels, ofColor::red);
 
-	cout << isHorizontalAligned(centerX) << endl;
+	//cout << isHorizontalAligned(centerX) << endl;
 
 
 	drawFlanks(pixels);
@@ -193,17 +193,17 @@ void ofApp::keyPressed(int key) {
 	}
 	else if (key == 't') {
 		cout << "Takeoff" << endl;
-		playSound("takeoff.mp3");
+		playSound("takeoff");
 		tello.takeoff();
 	}
 	else if (key == 'l') {
 		cout << "Landing" << endl;
-		playSound("landing.mp3");
+		playSound("landing");
 		tello.land();
 	}
 	else if (key == 'e') {
-		cout << "Trello disconnect" << endl;
-
+		cout << "Tello disconnect" << endl;
+		playSound("tello disconnect");
 		tello.close();
 	}
 }
@@ -256,7 +256,7 @@ void ofApp::gotMessage(ofMessage msg) {
 void ofApp::playSound(string filename)
 {
 	player.unload();
-	player.load("/sounds/" + filename);
+	player.load("/sounds/" + filename + ".mp3");
 	player.play();
 }
 
