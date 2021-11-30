@@ -7,6 +7,7 @@ void ofApp::setup() {
 	camHeight = 480;
 
 	setVidGrabber();
+	setupDrone();
 	playSound("setup complete");
 }
 
@@ -74,7 +75,7 @@ void ofApp::setupDrone()
 	}
 	catch (const std::exception&)
 	{
-
+		cout << "Tello connection failed!" << endl;
 	}
 }
 
