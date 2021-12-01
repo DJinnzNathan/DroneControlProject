@@ -75,7 +75,7 @@ void ofApp::setupDrone()
 	}
 	catch (const std::exception&)
 	{
-		cout << "Tello connection failed!" << endl;
+		cout << "Drone connection failed!" << endl;
 	}
 }
 
@@ -203,8 +203,8 @@ void ofApp::keyPressed(int key) {
 		tello.land();
 	}
 	else if (key == 'e') {
-		cout << "Tello disconnect" << endl;
-		playSound("tello disconnect");
+		cout << "Drone disconnect" << endl;
+		playSound("disconnect drone");
 		tello.close();
 	}
 }
