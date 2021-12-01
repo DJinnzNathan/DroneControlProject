@@ -22,7 +22,7 @@ void ofApp::update() {
 	
 	drawCrosshair(pixels, ofColor::red);
 
-	//cout << isHorizontalAligned(centerX) << endl;
+	cout << isHorizontalAligned(centerX) << endl;
 
 
 	drawFlanks(pixels);
@@ -67,8 +67,8 @@ void ofApp::setVidGrabber()
 void ofApp::setupDrone()
 {
 	distance = 50;
-	angle = 45;
-	speed = 50;
+	angle = 15;
+	speed = 20;
 	try
 	{
 		tello.connect();
@@ -170,10 +170,12 @@ int ofApp::isHorizontalAligned(int x)
 	int flankWidth = camWidth / 3;
 	if (centerX > middleOfX + (flankWidth / 2)) {
 		cout << "Steer to the right" << endl;
+		tello.cw(angle);
 		return 1;
 	}
 	if (centerX < middleOfX - (flankWidth / 2)) {
 		cout << "Steer to the left" << endl;
+		tello.ccw(angle);
 		return -1;
 	}
 	cout << "You're alright" << endl;
@@ -191,6 +193,10 @@ void ofApp::printPixelData()
 void ofApp::keyPressed(int key) {
 	if (key == 's' || key == 'S') {
 		vidGrabber.videoSettings();
+	}
+	else if (key == 'c') {
+		cout << "Takeoff" << endl;
+		tello.connect();
 	}
 	else if (key == 't') {
 		cout << "Takeoff" << endl;
