@@ -67,8 +67,8 @@ void ofApp::setVidGrabber()
 void ofApp::setupDrone()
 {
 	distance = 50;
-	angle = 15;
-	speed = 20;
+	angle = 20;
+	speed = 50;
 	try
 	{
 		tello.connect();
